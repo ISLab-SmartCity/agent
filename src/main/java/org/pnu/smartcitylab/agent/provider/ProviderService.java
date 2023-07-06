@@ -4,18 +4,17 @@ import lombok.AllArgsConstructor;
 import org.pnu.smartcitylab.agent.provider.dto.CreateProviderDTO;
 import org.pnu.smartcitylab.agent.entity.ProviderEntity;
 import org.pnu.smartcitylab.agent.provider.dto.UpdateProviderDTO;
+import org.pnu.smartcitylab.agent.repository.ProviderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
 @AllArgsConstructor
+@Service
 public class ProviderService {
-
     private ProviderRepository providerRepository;
-
 
     public ProviderEntity createProvider(CreateProviderDTO dto) {
         String id = UUID.randomUUID().toString();

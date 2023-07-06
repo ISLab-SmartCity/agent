@@ -15,20 +15,19 @@ import java.util.Date;
 @NoArgsConstructor
 public class DeviceEntity {
     @Schema(description = "업체 고유 번호", defaultValue = "uuid")
-    @Id
     private String provider_id;
 
     @Schema(description = "기기 고유 번호", defaultValue = "uuid", hidden = true)
     @Id
     private String device_id;
 
-    @Schema(description = "업체명", defaultValue = "스마트엠투엠")
+    @Schema(description = "기기명", defaultValue = "태양광발전기01호")
     private String device_nm;
 
-    @Schema(description = "업체 로그인 ID", defaultValue = "smartm2m")
+    @Schema(description = "기기주소", defaultValue = "??")
     private String device_addr;
 
-    @Schema(description = "업체 로그인 PW", defaultValue = "12347890")
+    @Schema(description = "기기 유형", defaultValue = "태양광발전기")
     private String device_type;
 
     @Schema(description = "생성일자", defaultValue = "Timestamp")
@@ -38,11 +37,12 @@ public class DeviceEntity {
     private Date modified_at;
 
     //    CreateItem Constructor
-    public DeviceEntity(String device_id, String provider_nm, String provider_login_id, String provider_login_pw) {
+    public DeviceEntity(String provider_id, String device_id, String device_nm, String device_addr, String device_type) {
+        this.provider_id = provider_id;
         this.device_id = device_id;
-        this.device_nm = provider_nm;
-        this.device_addr = provider_login_id;
-        this.device_type = provider_login_pw;
+        this.device_nm = device_nm;
+        this.device_addr = device_addr;
+        this.device_type = device_type;
         this.created_at = new Date();
         this.modified_at = new Date();
     }

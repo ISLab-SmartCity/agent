@@ -27,6 +27,12 @@ public class MqttConfig {
     @Value("${mqtt.broker.port}")
     private String mqttBrokerPort;
 
+    @Value("${mqtt.username}")
+    private String mqttUsername;
+
+    @Value("${mqtt.password}")
+    private String mqttPassword;
+
     public MqttPahoClientFactory mqttClientFactory() {
         DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
         MqttConnectOptions options = new MqttConnectOptions();
@@ -34,8 +40,8 @@ public class MqttConfig {
         System.out.println("tcp://" + mqttBrokerHost + ":" + mqttBrokerPort);
 
         options.setServerURIs(new String[]{"tcp://" + mqttBrokerHost + ":" + mqttBrokerPort});
-        options.setUserName("mqtt-test");
-        String pass = "mqtt-test";
+        options.setUserName(mqttUsername);
+        String pass = mqttPassword;
         options.setPassword(pass.toCharArray());
         options.setCleanSession(true);
 

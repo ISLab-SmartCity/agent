@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
-public class DeviceDTO {
+public class CreateDeviceDTO {
     @Schema(description = "업체 고유 번호", defaultValue = "uuid")
     @Id
     private String provider_id;
