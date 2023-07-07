@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "[1. 업체 API]", description = "1. IoT 제공 업체 API")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/provider")
 @AllArgsConstructor

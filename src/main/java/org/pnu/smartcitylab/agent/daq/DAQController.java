@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "[3. 센싱 데이터 API]", description = "3. IoT 센싱 데이터 API")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/daq")
 @AllArgsConstructor
