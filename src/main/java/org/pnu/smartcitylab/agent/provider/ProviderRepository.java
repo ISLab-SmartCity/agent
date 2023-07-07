@@ -1,4 +1,4 @@
-package org.pnu.smartcitylab.agent.repository;
+package org.pnu.smartcitylab.agent.provider;
 
 import org.pnu.smartcitylab.agent.entity.ProviderEntity;
 import org.springframework.context.annotation.ComponentScan;

@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document
+@Document(collection = "device")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,6 +30,9 @@ public class DeviceEntity {
     @Schema(description = "기기 유형", defaultValue = "태양광발전기")
     private String device_type;
 
+    @Schema(description = "기기 상세 정보", defaultValue = "Object")
+    private Object detail;
+
     @Schema(description = "생성일자", defaultValue = "Timestamp")
     private Date created_at;
 
@@ -44,6 +47,15 @@ public class DeviceEntity {
         this.device_addr = device_addr;
         this.device_type = device_type;
         this.created_at = new Date();
+        this.modified_at = new Date();
+    }
+
+    // UpdateItem Constructor
+    public DeviceEntity(String device_id, String device_nm, String device_addr, String device_type) {
+        this.device_id = device_id;
+        this.device_nm = device_nm;
+        this.device_addr = device_addr;
+        this.device_type = device_type;
         this.modified_at = new Date();
     }
 

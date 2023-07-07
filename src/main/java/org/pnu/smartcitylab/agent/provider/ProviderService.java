@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.pnu.smartcitylab.agent.provider.dto.CreateProviderDTO;
 import org.pnu.smartcitylab.agent.entity.ProviderEntity;
 import org.pnu.smartcitylab.agent.provider.dto.UpdateProviderDTO;
-import org.pnu.smartcitylab.agent.repository.ProviderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

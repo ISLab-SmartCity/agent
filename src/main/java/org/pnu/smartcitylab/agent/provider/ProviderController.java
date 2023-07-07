@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "업체 등록", description = "IoT 정보 제공 업체 정보 등록 API")
+@Tag(name = "[1. 업체 API]", description = "1. IoT 제공 업체 API")
 @RestController
 @RequestMapping("/provider")
 @AllArgsConstructor
@@ -28,7 +28,7 @@ public class ProviderController {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ApiResponseMessage.class))),
             @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = ApiResponseMessage.class)))
     })
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> createProvider(@RequestBody CreateProviderDTO dto) {
         ApiResponseMessage result = null;
         try {
@@ -79,7 +79,7 @@ public class ProviderController {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ApiResponseMessage.class))),
             @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = ApiResponseMessage.class)))
     })
-    @PutMapping("/")
+    @PutMapping
     public ResponseEntity<?> updateProvider(@RequestBody UpdateProviderDTO dto) {
         ApiResponseMessage result = null;
         try {
