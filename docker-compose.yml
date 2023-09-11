@@ -35,12 +35,18 @@ services:
 
   rabbitmq:
     container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=islab
+      - RABBITMQ_DEFAULT_PASS=islab
     ports:
       - '5672:5672'
       - '15672:15672'
       - '1883:1883'
     restart: unless-stopped
     image: 'rabbitmq:management'
+    volumes:
+      - ./enabled_plugins:/etc/rabbitmq/enabled_plugins
+
 
   mongodb:
     image: mongo
