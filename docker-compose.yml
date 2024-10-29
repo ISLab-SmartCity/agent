@@ -1,10 +1,13 @@
 version: '3'
+name: smartcitylab-agent
 services:
   zookeeper:
     image: wurstmeister/zookeeper
     container_name: zookeeper
     ports:
       - "2181:2181"
+    networks:
+      - smartcity
 
   kafka:
     image: wurstmeister/kafka
@@ -18,11 +21,13 @@ services:
       KAFKA_CREATE_TOPICS: "topic_name:1:1"
     depends_on:
       - zookeeper
+    networks:
+      - smartcity
 
   mariadb:
-    container_name: SmartCityLabAgent
+    container_name: smartcityLabMariaDB
     ports:
-      - '3306:3306'
+      - '13308:3306'
     restart: always
     volumes:
       - ./mysqldata/conf.d:/etc/mysql/conf.d
@@ -32,6 +37,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - TZ=Asia/Seoul
     image: mariadb
+    networks:
+      - smartcity
 
   rabbitmq:
     container_name: rabbitmq
@@ -46,15 +53,39 @@ services:
     image: 'rabbitmq:management'
     volumes:
       - ./enabled_plugins:/etc/rabbitmq/enabled_plugins
-
+    networks:
+      - smartcity
 
   mongodb:
     image: mongo
+    container_name: mongo
     restart: always
     volumes:
       - ./data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro  # 초기화 스크립트 추가
     ports:
       - 27017:27017
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=L1954tp!
+      - MONGO_INITDB_DATABASE=smartcity  # 초기 데이터베이스 이름 설정
+    networks:
+      - smartcity
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod # 개발 환경 설정 (dev, prod)
+    depends_on:
+      - mariadb
+      - mongodb
+      - kafka
+      - rabbitmq
+    networks:
+      - smartcity
+
+networks:
+  smartcity:
+    external: true

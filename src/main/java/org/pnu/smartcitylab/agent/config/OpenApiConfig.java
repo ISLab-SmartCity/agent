@@ -22,7 +22,8 @@ public class OpenApiConfig {
                 .version(springDocVersion)
                 .description("가상공간 및 모의도시 플랫폼 연동 요소 기술 개발")
                 .termsOfService("http://swagger.io/terms/")
-                .contact(new Contact().name("Kyeongwoo Oh").url("https://github.com/ISLab-SmartCity/agent").email("kyeongwoo@islab.re.kr"))
+                .contact(new Contact().name("Byeongwook Jung").url("https://github.com/ISLab-SmartCity/agent").email("byeonguk@islab.re.kr"))
+                // .contact(new Contact().name("Kyeongwoo Oh").url("https://github.com/ISLab-SmartCity/agent").email("kyeongwoo@islab.re.kr"))
                 .license(new License().name("Apache License Version 2.0").url("http://www.apache.org/licenses/LICENSE-2.0"));
         Server server = new Server();
         server.setUrl(serverUrl);
